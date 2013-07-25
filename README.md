@@ -4,16 +4,17 @@ MyLeetcode
 Practicing coding on LeetCode
 
 
-**4/132**
 
-Problems cannot understand:
+
+Problems that are hard to understand:
 
 	Median of Two Sorted Arrays
-	..
+	Wildcard Matching
+	
 
 Good problems:
 	
 	Two Sum
 	Longest Substring Without Repeating Characters
 	Add Two Numbers
-	..
+	Regular Expression Matching
