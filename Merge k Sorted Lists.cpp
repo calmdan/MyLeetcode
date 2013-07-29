@@ -23,7 +23,6 @@ public:
         }
         if(lists.size() == 0) return NULL;
         if(lists.size() == 1) return lists[0];
-
         make_heap(lists.begin(),lists.end(),cmp());
         ListNode* res = NULL;
         ListNode* cur = NULL;
