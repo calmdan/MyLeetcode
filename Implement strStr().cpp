@@ -1,4 +1,4 @@
-//brute force, O(n^2)
+//brute force, O(n*m)
 class Solution {
 public:
     char *strStr(char *haystack, char *needle) {
