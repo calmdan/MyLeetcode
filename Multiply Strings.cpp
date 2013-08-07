@@ -87,7 +87,7 @@ public:
         string      s(n,'0');
         for(size_t i=0;i<n1;++i){
             for(size_t j=0;j<n2;++j){
-                r[i+j+1]=(num1[i]-'0')*(num2[j]-'0');
+                r[i+j+1]+=(num1[i]-'0')*(num2[j]-'0');
             }
         }
         for(size_t i=n-1;i>0;--i){
