@@ -6,13 +6,12 @@ Practicing coding on LeetCode
 
 
 
-Problems that are hard to understand:
+Difficult problems:
 
 	Median of Two Sorted Arrays
 	Wildcard Matching
-	
 
-Good problems:
+Useful problems:
 	
 	Two Sum
 	Longest Substring Without Repeating Characters
