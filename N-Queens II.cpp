@@ -1,3 +1,4 @@
+//有一种位运算方法，很快，discuss.leetcode可以搜到
 class Solution {
 public:
     int totalNQueens(int n) {
