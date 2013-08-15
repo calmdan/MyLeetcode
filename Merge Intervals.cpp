@@ -1,5 +1,6 @@
 //比较函数中，如果小于就能过大数据，如果是小于或等于就会run time error
 //这是为什么？？
+//跟STL的sort实现有关， 记住：比较函数对相等元素返回false！！！
 
 //always run time erroe, don't know why
 /**
