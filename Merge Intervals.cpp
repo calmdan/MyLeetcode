@@ -1,3 +1,6 @@
+//比较函数中，如果小于就能过大数据，如果是小于或等于就会run time error
+//这是为什么？？
+
 //always run time erroe, don't know why
 /**
  * Definition for an interval.
@@ -13,7 +16,7 @@ class Solution {
 public:
     static bool mycmp(Interval i1,Interval i2)
     {
-        return i1.start <= i2.start;
+        return i1.start < i2.start;//here!!!!!!!!!!!!!!!!!!!!!!
     }
     vector<Interval> merge(vector<Interval> &intervals) {
     vector<Interval> cc;
