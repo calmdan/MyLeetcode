@@ -1,3 +1,32 @@
+//第二版，思路更清晰，循环
+//关键点：旋转之后两部分仍然各自有序
+//找到有序的那一半，在范围内就进去找，否则在另外一半找
+class Solution {
+public:
+    int search(int A[], int n, int target) {
+        // Start typing your C/C++ solution below
+        // DO NOT write int main() function
+        int l=0,r=n-1;
+        while(l<=r)
+        {
+            int m = (r-l)/2+l;
+            if(target == A[m]) return m;
+            if(A[l]<=A[m])//左边的顺序仍然是对的
+            {
+                if(target<A[m] && target >=A[l]) r=m-1;
+                else l = m+1;
+            }
+            else//右边的顺序仍然是对的
+            {
+                if(target>A[m] && target <=A[r]) l=m+1;
+                else r = m-1;
+            }
+        }
+        return -1;
+    }
+};
+
+//第一版，递归
 class Solution {
 public:
     int search(int A[], int n, int target) {
