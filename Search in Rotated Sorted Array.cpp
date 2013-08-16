@@ -11,22 +11,25 @@ public:
         {
             int m = (r-l)/2+l;
             if(target == A[m]) return m;
-            if(A[l]<=A[m])//左边的顺序仍然是对的
+            if(A[l]<A[m])//左边的顺序仍然是对的
             {
                 if(target<A[m] && target >=A[l]) r=m-1;
                 else l = m+1;
             }
-            else//右边的顺序仍然是对的
+            else if(A[l]>A[m])//右边的顺序仍然是对的
             {
                 if(target>A[m] && target <=A[r]) l=m+1;
                 else r = m-1;
             }
+            else l++;
         }
         return -1;
     }
 };
 
+
 //第一版，递归
+//未考虑有重复元素的情况，边界考虑的有问题，但是能AC
 class Solution {
 public:
     int search(int A[], int n, int target) {
