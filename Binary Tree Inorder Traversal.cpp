@@ -7,6 +7,7 @@
  *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
  * };
  */
+ //迭代方式怎么写？？
 class Solution {
 public:
     vector<int> inorderTraversal(TreeNode *root) {
