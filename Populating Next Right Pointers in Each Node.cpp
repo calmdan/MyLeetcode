@@ -32,7 +32,7 @@ public:
     }
 };
 
-//简洁递归
+//简洁递归，只对完美二叉树试用
 void connect(TreeLinkNode *root) {
     // Start typing your C/C++ solution below
     // DO NOT write int main() function
