@@ -9,16 +9,8 @@ public:
         {
             if(nums.find(target - numbers[i]) != nums.end())
             {
-                if(i+1 > nums[target - numbers[i]] )
-                {
                     results.push_back(nums[target - numbers[i]]);
                     results.push_back(i+1);
-                }
-                else
-                {
-                    results.push_back(i+1);
-                    results.push_back(nums[target - numbers[i]]);
-                }
             }
             else
             {
