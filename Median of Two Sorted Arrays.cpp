@@ -87,3 +87,61 @@ public:
         else return a[ia-1];
     }
 };
+
+//best solution
+double MedianOfFour (int a, int b, int c, int d)
+{
+        int minValue = min (d, min (a, min (b,c) ) );
+        int maxValue = max (d, max (a, max (b,c) ) );
+        return (a + b + c + d - minValue - maxValue) / 2.0 ;
+}
+ 
+double MedianOfThree (int a, int b, int c)
+{
+        int minValue = min (a, min (b,c) ) ;
+        int maxValue = max (a, max (b,c) ) ;
+        return (a + b + c - minValue - maxValue);
+}
+ 
+//constraint : n <= m
+double MedianSortedArrays (int A[MAX], int n, int B[MAX], int m)
+{
+        //base case # 1
+        if ( n == 1 ) 
+        {
+                if ( m == 1 ) 
+                        return (A[0] + B[0]) / 2.0; 
+                if ( m % 2 == 1) 
+                         return ( B[m/2] + MedianOfThree (A[0], B[m/2-1], B[m/2+1]) ) / 2.0 ;
+                else 
+                        return MedianOfThree ( A[0], B[m/2-1], B[m/2] );
+        }
+ 
+        //base case # 2
+        if ( n == 2 ) 
+        {
+                if ( m == 2 )
+                        return MedianOfFour (A[0], A[1], B[0], B[1]);
+                if ( m % 2 == 1 )
+                        return MedianOfThree ( B[m/2], min(A[0], B[m/2+1]), max (A[1], B[m/2-1]) ) ;
+                else 
+                        return MedianOfFour ( B[m/2-1], B[m/2], min(A[0], B[m/2+1]), max(A[1], B[m/2-2]) );
+        }
+ 
+ 
+        int minRemoved, idxA = n/2 , idxB = m/2 ;
+ 
+        if ( A[idxA] < B[idxB]  )                                               
+        {
+                if ( n % 2 == 0 ) --idxA;       //for even number of elements --idxA points to lower median of A[]
+                minRemoved = min ( idxA, m - idxB - 1) ;        
+                return MedianSortedArrays ( A + minRemoved, n - minRemoved, B, m - minRemoved); 
+        }
+        else                                                                                    
+        {
+                if ( m % 2 == 0 ) --idxB;       //for even number of elements --idxB points to lower median of B[]
+                minRemoved = min ( n - idxA - 1, idxB) ;        
+                return MedianSortedArrays ( A, n - minRemoved, B + minRemoved, m - minRemoved); 
+        }
+ 
+}
