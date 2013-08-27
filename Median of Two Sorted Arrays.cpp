@@ -60,3 +60,30 @@ public:
         return (max(Ai_1, Bj_1) + Ai) / 2.0;
     };
 };
+
+
+//k-th number of two sorted arrays
+class Solution {
+public:
+    double findMedianSortedArrays(int A[], int m, int B[], int n) {
+        int total = n + m;
+        
+        if (total % 2 == 0) {
+            return (findKth(A, m, B, n, total/2) + findKth(A, m, B, n, total / 2 + 1)) / 2;
+        }
+        else 
+            return findKth(A, m, B, n, total / 2 + 1);
+    }
+    
+    double findKth(int a[], int m, int b[], int n, int k) {
+        if (m > n) return findKth(b, n, a, m, k);
+        if (m == 0) return b[k-1];
+        if (k == 1) return min(a[0], b[0]);
+        
+        int ia = min(k/2, m);
+        int ib = k - ia;
+        if (a[ia-1] < b[ib-1]) return findKth(a+ia, m - ia, b, n, k - ia);
+        else  if (a[ia-1] > b[ib-1]) return findKth(a, m, b+ib, n - ib, k - ib);
+        else return a[ia-1];
+    }
+};
