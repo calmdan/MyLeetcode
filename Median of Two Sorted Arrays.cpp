@@ -12,9 +12,7 @@ using namespace std;
 class Solution {
 public:
     double findMedianSortedArrays(int A[], int m, int B[], int n) {
-//        return findMedianSortedArrays1(A, m, B, n);
         return findMedianSortedArrays1(A, m, B, n);
-    }
     //O(m+n)
     double findMedianSortedArrays1(int A[], int m, int B[], int n) {
         int i = 0, j = 0;
@@ -145,3 +143,65 @@ double MedianSortedArrays (int A[MAX], int n, int B[MAX], int m)
         }
  
 }
+
+
+//my solution
+class Solution {
+public:
+    double findMedianSortedArrays(int A[], int m, int B[], int n) {
+        // Start typing your C/C++ solution below
+        // DO NOT write int main() function
+        if(m==0) return n%2==0?(B[(n-1)/2]+B[(n-1)/2+1])/2.0:B[(n-1)/2];
+        if(n==0) return m%2==0?(A[(m-1)/2]+A[(m-1)/2+1])/2.0:A[(m-1)/2];
+        if(m>=n) return findRec(A,m,B,n);
+        return findRec(B,n,A,m);
+    }
+    double MedianOfFour (int a, int b, int c, int d)
+    {
+        int minValue = min (d, min (a, min (b,c) ) );
+        int maxValue = max (d, max (a, max (b,c) ) );
+        return (a + b + c + d - minValue - maxValue) / 2.0 ;
+    }
+
+    double MedianOfThree (int a, int b, int c)
+    {
+        int minValue = min (a, min (b,c) ) ;
+        int maxValue = max (a, max (b,c) ) ;
+        return (a + b + c - minValue - maxValue);
+    }
+    double findRec(int A[], int m, int B[], int n)
+    {
+        if(n==1)
+        {
+            if(m==1) return (A[0]+B[0])/2.0;
+            if(m%2==0) return MedianOfThree(B[0],A[(m-1)/2],A[(m-1)/2+1]);
+            else return MedianOfFour(B[0],A[(m-1)/2],A[(m-1)/2+1],A[(m-1)/2-1]);
+        }
+        else if(n==2)
+        {
+            if(m==2) return MedianOfFour(A[0],A[1],B[0],B[1]);
+            else if(m%2==0) return MedianOfFour(A[(m-1)/2],A[(m-1)/2+1],max(A[(m-1)/2-1],B[0]),min(A[(m-1)/2+2],B[1]));
+            else return MedianOfThree(A[(m-1)/2],max(A[(m-1)/2-1],B[0]),min(A[(m-1)/2+1],B[1]));
+        }
+        double m1 = A[(m-1)/2];
+        double m2 = B[(n-1)/2];
+        if(m1==m2)
+        {
+            if(m%2==0 && n%2==0)
+            {
+                double t1 = A[(m-1)/2+1];
+                double t2 = B[(n-1)/2+1];
+                return t1>t2?(m1+t2)/2:(m1+t1)/2;
+            }
+            else return m1;
+        }
+        else if(m1>m2)
+        {
+            return findRec(A,m-(n-1)/2,B+(n-1)/2,n-(n-1)/2);
+        }
+        else
+        {
+            return findRec(A+(n-1)/2,m-(n-1)/2,B,n-(n-1)/2);
+        }
+    }
+};
