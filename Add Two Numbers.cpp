@@ -11,35 +11,35 @@ public:
     ListNode *addTwoNumbers(ListNode *l1, ListNode *l2) {
         // Start typing your C/C++ solution below
         // DO NOT write int main() function
-        ListNode *temp = new ListNode(0);
-        ListNode *res = temp;
-        ListNode *last2 = NULL;
+        ListNode *c = new ListNode(0);
+        ListNode *res = c;
+        ListNode *last = NULL;
         while(l1!=NULL && l2!=NULL)
         {
-            temp->next = new ListNode((temp->val +l1->val +l2->val)/10);
-            temp->val = (temp->val +l1->val +l2->val)%10;
-            last2 = temp;
-            temp = temp->next;
+            c->next = new ListNode((c->val +l1->val +l2->val)/10);
+            c->val = (c->val +l1->val +l2->val)%10;
+            last = c;
+            c = c->next;
             l1=l1->next;
             l2=l2->next;
         }
         while(l1!=NULL)
         {
-            temp->next = new ListNode((temp->val +l1->val)/10);
-            temp->val = (temp->val +l1->val)%10;
-            last2 = temp;
-            temp = temp->next;
+            c->next = new ListNode((c->val +l1->val)/10);
+            c->val = (c->val +l1->val)%10;
+            last = c;
+            c = c->next;
             l1=l1->next;
         }
         while(l2!=NULL)
         {
-            temp->next = new ListNode((temp->val  +l2->val)/10);
-            temp->val = (temp->val +l2->val)%10;
-            last2 = temp;
-            temp = temp->next;
+            c->next = new ListNode((c->val  +l2->val)/10);
+            c->val = (c->val +l2->val)%10;
+            last = c;
+            c = c->next;
             l2=l2->next;
         }
-        if(temp->val ==0) last2->next =NULL;
+        if(c->val ==0) last->next =NULL;
         return res;
     }
 };
