@@ -7,8 +7,10 @@ public:
         bool valid = false;
         bool isNegative = false;
         const char *p = str;
+        //空格
         while(*p++==' ');
         p--;
+        //正负号
         if(*p=='-')
         {
             isNegative = true;
@@ -20,19 +22,20 @@ public:
             p++;
         }
         long long result = 0;
+        
         while(*p!='\0')
         {
             int digit = *p-'0';
-            if(digit<0 || digit >10) break;
+            if(digit<0 || digit >10) break;//出现字符后跳出循环
             else valid =true;
-            if(result >INT_MAX/10)
+            if(result >INT_MAX/10)//判断溢出
             {
                 if(isNegative)
                     result =INT_MIN;
                 else result = INT_MAX;
                 return result;
             }
-            if(result == INT_MAX/10 && digit>=8)
+            if(result == INT_MAX/10 && digit>=8)//判断溢出
             {
                 if(isNegative)
                     result =INT_MIN;
