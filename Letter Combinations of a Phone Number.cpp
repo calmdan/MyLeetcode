@@ -43,3 +43,35 @@ public:
         return result;
     }
 };
+
+
+class Solution {
+public:
+  string dic[10]={"0","1","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
+    vector<string> letterCombinations(string digits) {
+        // Start typing your C/C++ solution below
+        // DO NOT write int main() function
+        queue<string> q;
+        q.push("");
+        for(int i=0;i<digits.length();i++)
+        {
+            int n = q.size();
+            for(int j=0;j<n;j++)
+            {
+                string t = q.front();
+                q.pop();
+                for(int k =0;k<dic[digits[i]-'0'].size();k++)
+                {
+                    q.push(t+dic[digits[i]-'0'][k]);
+                }
+            }
+        }
+        vector<string> res;
+        while(!q.empty())
+        {
+            res.push_back(q.front());
+            q.pop();
+        }
+        return res;
+    }
+};
