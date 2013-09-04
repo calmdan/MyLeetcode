@@ -5,15 +5,15 @@ public:
         // DO NOT write int main() function
         int n = num.size();
         if(n==1) return;
-        bool flag = false;
         int i =n-2;
         for(;i>=0;i--)
         {
-            if(num[i]<num[i+1])
-            {
-                flag = true;
-                break;
-            }
+            if(num[i]<num[i+1]) break;
+        }
+        if(i==-1) 
+        {
+            reverse(num.begin(),num.end());
+            return;
         }
         int j=i+1;
         for(;j<n;j++)
@@ -21,15 +21,11 @@ public:
             if(num[j]<=num[i]) break;
         }
         j--;
-        if(!flag) 
-        {
-            reverse(num.begin(),num.end());
-            return;
-        }
         swap(num[i],num[j]);
         reverse(num.begin()+i+1,num.end());
     }
 };
+
 class Solution {
 public:
     void nextPermutation(vector<int> &num) {
