@@ -31,18 +31,14 @@ public:
                     found.resize(n, 0);
                 } else {
                     int id = s[i];
+                    if (need[id] && found[id] < need[id])  count++;
                     found[id]++;
-                    if (need[id] && found[id] <= need[id])
-                        count++;
-
-                    if (count == n)
-                        ret.push_back(begin);
+                    if (count == n)  ret.push_back(begin);
 
                     // move current window
                     if ((i - begin) / len + 1 == n) {
                         id = s[begin];
-                        if (need[id] && found[id] == need[id])
-                            count--;
+                        if (need[id] && found[id] == need[id]) count--;
                         found[id]--;
                         begin += len;
                     }
