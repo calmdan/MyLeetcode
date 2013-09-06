@@ -7,13 +7,13 @@ public:
         
         int l = 0;
         int r = x;
-        while(l+1<r)
+        while(l<=r)
         {
             int mid = (r-l)/2+l;
             if(x/mid ==mid) return mid;
-            else if(x/mid <mid) r=mid;
-            else l = mid;
+            else if(x/mid <mid) r=mid -1;
+            else l = mid +1;
         }
-        return l;
+        return r;
     }
 };
