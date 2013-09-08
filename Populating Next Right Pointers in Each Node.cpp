@@ -6,7 +6,7 @@
  *  TreeLinkNode(int x) : val(x), left(NULL), right(NULL), next(NULL) {}
  * };
  */
- //迭代宽搜
+ //迭代宽搜,不过题目要求常数空间
 class Solution {
 public:
     void connect(TreeLinkNode *root) {
