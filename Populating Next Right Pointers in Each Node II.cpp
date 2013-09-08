@@ -35,9 +35,17 @@ public:
 //解题思路：
 //与上一题类似，唯一的不同是每次要先找到一个第一个有效的next链接节点，并且递归的时候要先处理右子树，再处理左子树。
 
-
-
-    void connect(TreeLinkNode *root) {  
+/**
+ * Definition for binary tree with next pointer.
+ * struct TreeLinkNode {
+ *  int val;
+ *  TreeLinkNode *left, *right, *next;
+ *  TreeLinkNode(int x) : val(x), left(NULL), right(NULL), next(NULL) {}
+ * };
+ */
+class Solution {
+public:
+     void connect(TreeLinkNode *root) {  
       // Start typing your C/C++ solution below  
       // DO NOT write int main() function  
       if(root== NULL) return;  
@@ -64,6 +72,9 @@ public:
       {        
         root->left->next = root->right? root->right:p;        
       }  
-      connect(root->right);  //!!!!
-      connect(root->left);      
+      connect(root->right);  
+      connect(root->left);
+      
+            
     }  
+};
