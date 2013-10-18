@@ -28,3 +28,44 @@ public:
     }
     
 };
+
+
+
+class Solution {
+public:
+    bool isValidBST(TreeNode *root) {
+        // Start typing your C/C++ solution below
+        // DO NOT write int main() function
+        return check(root,INT_MIN,INT_MAX,0);
+        
+    }
+    bool check(TreeNode *root,int lb,int ub,int flag)
+    {
+        if(root ==NULL) return true;
+        if(flag==0)
+        {
+            if( !check(root->left,lb,root->val,2) )return false;
+            if( !check(root->right,root->val,ub,1) )return false;
+        }
+        else if(flag==1)
+        {
+            if(root->val <=lb ) return false;
+            if( !check(root->left,lb,root->val,3) )return false;
+            if( !check(root->right,root->val,ub,1) )return false;
+        }
+        else if(flag==2)
+        {
+            if( root->val >=ub) return false;
+            if( !check(root->left,lb,root->val,2) )return false;
+            if( !check(root->right,root->val,ub,3) )return false;
+        }
+        else
+        {
+            if(root->val <=lb || root->val >=ub) return false;
+            if( !check(root->left,lb,root->val,3) )return false;
+            if( !check(root->right,root->val,ub,3) )return false;
+        }
+        return true;
+    }
+    
+};
