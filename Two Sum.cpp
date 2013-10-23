@@ -20,3 +20,23 @@ public:
         return results;
     }
 };
+
+//new
+class Solution {
+public:
+    vector<int> twoSum(vector<int> &numbers, int target) {
+        // Note: The Solution object is instantiated only once and is reused by each test case.
+        unordered_map<int,int> map;
+        vector<int> res;
+        for(int i=0;i<numbers.size();i++)
+        {
+            if(map.find(target-numbers[i]) !=map.end())
+            {
+                res.push_back(map[target-numbers[i]]);
+                res.push_back(i+1);
+                return res;
+            }
+            else map[numbers[i]]=i+1;
+        }
+    }
+};
