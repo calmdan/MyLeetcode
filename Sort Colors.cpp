@@ -4,6 +4,7 @@ public:
         // Start typing your C/C++ solution below
         // DO NOT write int main() function
         int l=0,r=n-1,k=0;
+        //l的左边都是0，r的右边都是2，k-l都是1
         while(k<=r)
         {
             if(A[k]==0)
