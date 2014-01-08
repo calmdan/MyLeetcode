@@ -8,7 +8,7 @@ public:
         func(res,n,k,1,0,tmp);
         return res;
     }
-    void func(vector<vector<int> > &res,int n, int k, int dep,int pre, vector<int> & tmp)
+    void func(vector<vector<int> > &res,int n, int k, int dep,int pre, vector<int> tmp)
     {
         if(dep ==k+1) 
         {
