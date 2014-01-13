@@ -23,11 +23,9 @@ public:
             else
             {
                 int k=max - 2*i;
-                for(int j=i;j<s.length();)
+                for(int j=i;j<s.length();j=j+k,k=max -k)
                 {
                     res+=s[j];
-                    j=j+k;
-                    k=max -k;
                 }
             }
         }
